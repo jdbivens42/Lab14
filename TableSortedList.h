@@ -26,8 +26,47 @@ class TableSortedList
 
 //DO THIS
 //complete the implementation for TableSortedList
+template < class T >
+TableSortedList<T>::TableSortedList(int (*comp_item) (T* item_1, T* item_2), int (*comp_key) (String* key, T* item));
+{
+	
+}
 
+template < class T >
+TableSortedList<T>::TableSortedList();
+{
+	
+}
 
+template < class T >
+bool TableSortedList<T>::tableIsEmpty();
+{
+	
+}
+
+template < class T >
+int TableSortedList<T>::tableSize();
+{
+	
+}
+
+template < class T >
+T* TableSortedList<T>::tableRetrieve(String* sk);
+{
+	
+}
+
+template < class T >
+void TableSortedList<T>::tableInsert(T* item);  //does not allow duplicate search keys into the table (need to use getKey() to check for duplicates)
+{
+	
+}
+
+template < class T >
+bool TableSortedList<T>::tableRemove(String* search_key);  //returns true if delete is successful (need to call tableRetrieve to see if the item is there)
+{
+	
+}
 
 
 
