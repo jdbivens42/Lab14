@@ -29,53 +29,55 @@ class TableSortedList
 template < class T >
 TableSortedList<T>::TableSortedList(int (*comp_item) (T* item_1, T* item_2), int (*comp_key) (String* key, T* item));
 {
-	
+	SortedListDoublyLinked<T>* list=new SortedListDoublyLinked<T>(comp_item,comp_key);
+	sldl=list;
 }
 
 template < class T >
 TableSortedList<T>::TableSortedList();
 {
-	
+	delete sldl;
 }
 
 template < class T >
 bool TableSortedList<T>::tableIsEmpty();
 {
-	
+	return sldl->isEmpty();
 }
 
 template < class T >
 int TableSortedList<T>::tableSize();
 {
-	
+	return sldl->sze;
 }
 
 template < class T >
 T* TableSortedList<T>::tableRetrieve(String* sk);
 {
-	
+	return sldl->get(sk);
 }
 
 template < class T >
 void TableSortedList<T>::tableInsert(T* item);  //does not allow duplicate search keys into the table (need to use getKey() to check for duplicates)
 {
-	
+	if (sldl->get(item->getKey()))
+		return;
+	else
+		sldl->add(item);
 }
 
 template < class T >
 bool TableSortedList<T>::tableRemove(String* search_key);  //returns true if delete is successful (need to call tableRetrieve to see if the item is there)
 {
-	
+	if (sldl->get(search_key))
+	{
+		sldl->remove(search_key);
+		return true
+	}
+	else
+	{
+		return false;
+	}
 }
-
-
-
-
-
-
-
-
-
-
 
 #endif
