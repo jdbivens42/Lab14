@@ -22,7 +22,17 @@ void deleteCDs(ListArray<CD>* list)
    }
    delete iter;
 }
-
+void displayTable(TableSortedList<CD>* TSL)
+{
+	ListDoublyLinkedIterator<CD>* iter= TSL->iterator();
+	while (iter->hasNext())
+	{
+		CD* cd=iter->next();
+		cd->getKey()->displayString();
+		cout<<endl;
+	}
+	delete iter;
+}
 int main()
 {
    ListArray<CD>* cds = CD::readCDs("cds.txt");
@@ -33,7 +43,52 @@ int main()
 
    //DO THIS
    //thoroughly test your table
+   ListArrayIterator<CD>* cd_iter= cds->iterator();
+   String* my_string;
+   while(cd_iter->hasNext())
+   {
+	   CD* cd=cd_iter->next();
+	   slt->tableInsert(cd);
+   }
+   delete cd_iter;
+   displayTable(slt);
+   
+   cout<<slt->tableSize()<<endl;
+   cin.get();
+   
+   cd_iter= cds->iterator();
+   while(!slt->tableIsEmpty()&&cd_iter->hasNext())
+   {
+	   CD* cd=cd_iter->next();
+	   slt->tableRemove(cd->getKey());
+   }
+   delete cd_iter;
+   displayTable(slt);
+   cin.get();
+   for(int i=0;i<5;i++)
+   {
+		cd_iter= cds->iterator();
+		while(cd_iter->hasNext())
+		{
+			CD* cd=cd_iter->next();
+			slt->tableInsert(cd);
+			my_string=cd->getKey();
+		}
+		delete cd_iter;
+		displayTable(slt);
+		cout<<slt->tableSize()<<endl;
+		cin.get();
+   }
+   cout<<slt->tableRemove(my_string)<<endl;
+   cout<<slt->tableRemove(my_string);
+   cout<<slt->tableRemove(my_string);
+   cout<<slt->tableRemove(my_string);
+   cout<<slt->tableRemove(my_string);
+   slt->tableRemove(my_string);
 
+	
+
+	
 
 
 

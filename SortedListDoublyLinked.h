@@ -337,7 +337,7 @@ ListDoublyLinkedIterator<T>* SortedListDoublyLinked<T>::iterator()
    //locate the head/first node for the iterator without moving the interior node (loc)
    DoubleNode<T>* head = findHead();
    
-   return new ListDoublyLinkedIterator<T>::ListDoublyLinkedIterator(head);
+   return new ListDoublyLinkedIterator<T>(head);
 
 
 } 
